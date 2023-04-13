@@ -1,0 +1,22 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pf-hello-world
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: web
+      name: pf-hello-world
+  template:
+    metadata:
+      labels:
+        app: web
+        name: pf-hello-world
+    spec:
+      containers:
+        - name: pf-hello-world
+          image: sonnguyenep/pf-hello-world:latest
+          ports:
+            - containerPort: 80
